@@ -1,11 +1,8 @@
 import java.text.Collator;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 import java.text.Collator;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -34,7 +31,8 @@ public class MSDRadixSort {
                 "樊辉辉",
                 "苏会敏",
                 "高民政"};
-        sortchinese();
+//        sortchinese();
+
 
         // pinyin implementation
         System.out.println("Convert Chinese to Eng Algorithm");
@@ -43,11 +41,26 @@ public class MSDRadixSort {
         for (int i=0;i<convertedNames.length;i++) {
             System.out.println(convertedNames[i]);
         }
-
+        Map<String, String> chinese = new HashMap<>();
+        for(int i=0;i<c.length;i++){
+            chinese.put(convertedNames[i],c[i]);
+        }
+        System.out.println("--------------------------------------------------------------");
         System.out.println("Our Sorting Algorithm english");
         sort(convertedNames);
         for (int i=0;i<convertedNames.length;i++) {
             System.out.println(convertedNames[i]);
+        }
+        System.out.println("--------------------------------------------------------------");
+        Map<String,String> sortedChinese = new LinkedHashMap<>();
+        for(int i=0;i<c.length;i++){
+            sortedChinese.put(chinese.get(convertedNames[i]),convertedNames[i]);
+        }
+
+        System.out.println("Sorted Chinese is ");
+        List<String> arrayKey = new ArrayList<>(sortedChinese.keySet());
+        for(int i=0;i<arrayKey.size();i++){
+            System.out.println(arrayKey.get(i));
         }
 
         // testing
