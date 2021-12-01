@@ -1,8 +1,10 @@
+import javafx.util.Pair;
+
 public class InsertionSortMSD {
 
-    public static void sort(String[] a, int lo, int hi, int d) {
+    public static void sort(Pair[] a, int lo, int hi, int d) {
         for (int i = lo; i < hi; i++)
-            for (int j = i; j > lo && less(a[j], a[j - 1], d); j--)
+            for (int j = i; j > lo && less(a[j].getValue().toString(), a[j - 1].getValue().toString(), d); j--)
                 swap(a, j, j - 1);
     }
 
@@ -10,8 +12,8 @@ public class InsertionSortMSD {
         return v.substring(d).compareTo(w.substring(d)) < 0;
     }
 
-    private static void swap(Object[] a, int j, int i) {
-        Object temp = a[j];
+    private static void swap(Pair[] a, int j, int i) {
+        Pair temp = a[j];
         a[j] = a[i];
         a[i] = temp;
     }
